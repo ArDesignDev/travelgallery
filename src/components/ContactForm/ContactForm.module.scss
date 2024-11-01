@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+
+.contactForm {
+    background-color: $color-dark;
+    padding: 6rem;
+    border-radius: 3rem;
+
+    input,
+    textarea {
+        background-color: #040605;
+        border: none;
+        width: 100%;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+        font-family: $font-secondary;
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 1px 6px 9px 3px rgb(106 106 106 / 40%);
+        }
+    }
+
+    input {
+        height: 5rem;
+    }
+
+    textarea {
+        height: 20rem;
+    }
+
+    .btn {
+        width: 100%;
+        background-color: $color-primary;
+        padding: 1.5rem 3rem;
+        border-radius: 2rem;
+        margin-top: 1rem;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: $transition;
+        font-size: 1.6rem;
+
+        &:hover {
+            background-color: #158f99;
+        }
+    }
+}

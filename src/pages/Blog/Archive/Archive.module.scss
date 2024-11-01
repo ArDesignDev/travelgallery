@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as *;
+
+.archive {
+    background-color: #fff;
+    min-height: 140vh;
+    padding-bottom: 10rem;
+
+    &.fadeIn {
+        opacity: 1;
+    }
+      
+    &.hidden {
+        visibility: hidden;
+    }
+
+    // main
+    .main {
+        @media (max-width: $bp-medium) {
+            margin-top: 2rem;
+        }
+        .archiveList {
+            margin: 2rem -1rem;
+
+            .archiveItem {
+                padding: 1rem;
+
+                .postImageWrapper {
+                    overflow: hidden;
+                    border-radius: 1rem;
+                    margin-bottom: 1rem;
+                    background-color: $color-dark;
+             
+                    .postImage {
+                        background-color: $color-dark;
+                        border-radius: 1rem;
+                        transition: $transition;
+                        backface-visibility: hidden;
+                        will-change: transform;
+                        backface-visibility: hidden;
+                        transform: scale(1) translateZ(0);
+                        opacity: 1;
+
+                        &:hover {
+                            transform: scale(1.1) translateZ(0);
+                            opacity: .8;
+                        }
+    
+                        img {
+                            width: 100%;
+                            height: 40rem;
+                            object-fit: cover;
+                            display: block;
+
+                            @media (max-width: $bp-medium) {
+                                height: 30rem;
+                            }
+
+                            @media (max-width: $bp-small) {
+                                height: 25rem;
+                            }
+                        }
+                    }
+   
+                }
+                
+
+                .archiveItemTitle {
+                    font-size: 2.4rem;
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+    }
+
+    .loadMore {
+        text-align: center;      
+    }
+
+}

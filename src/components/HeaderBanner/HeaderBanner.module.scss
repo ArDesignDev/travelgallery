@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+.header {
+    $height: 45rem;
+    $heightMobile: 30rem;
+
+    position: relative;
+    height: $height;
+    background-color: $color-dark;
+
+    @media (max-width: $bp-medium) {
+        height: $heightMobile;
+    }
+
+    .headerImageWrapper {
+        background-color: $color-dark;
+
+        .headerImage {
+            height: $height;
+            width: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            display: block;
+
+            @media (max-width: $bp-medium) {
+                height: $heightMobile;
+            }
+        }
+    }
+
+    .headerContent {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        padding: 4rem 4rem 6rem 4rem;
+        text-align: center;
+
+        @media (max-width: $bp-medium) {
+            padding: 4rem 3rem 3rem 3rem;
+        }
+
+        h1, p {
+            color: #fff;
+        }
+
+        .headerDesc {
+            max-width: 80rem;
+            margin: 0 auto;
+            color: #fff;
+        }
+    }
+}

@@ -1,0 +1,257 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.home {
+  min-height: 200vh;
+
+    // hero
+    .hero {
+        position: relative;
+        height: 100vh;
+        background-color: $color-dark;
+
+        .heroVideoContainer {
+            background-color: #000;
+
+            video {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                opacity: .7;
+            }
+        }
+        
+        .heroText {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            h1 {
+                font-size: 7rem;
+                margin-bottom: 5rem;
+                margin-top: 1rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #fff;
+                max-width: 70rem;
+
+                @media (max-width: $bp-medium) {
+                    font-size: 3.6rem;
+                    margin-top: 2rem;
+                }
+            }
+
+            p {
+                max-width: 70rem;
+                text-transform: uppercase;
+                color: #fff;
+                font-size: 2rem;
+                margin-bottom: 0;
+
+                @media (max-width: $bp-medium) {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+
+    // about
+    .about {
+        background-color: #fff;
+        position: relative;
+        padding: 8rem 0;
+
+        @media (max-width: $bp-medium) {
+            padding: 3rem 0 4rem;
+            background-color: $color-light-gray;
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            pointer-events: none;
+            z-index: 0;
+            position: absolute;
+            width: 35%;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: $color-dark;
+
+            @media (max-width: $bp-medium) {
+                width: 100%;
+                bottom: auto;
+                height: 20rem;
+            }
+        }
+
+        .aboutImage {
+            position: relative;
+            z-index: 1;
+
+            @media (max-width: $bp-medium) {
+                display: block;
+                max-width: 26rem;
+                margin: 0 auto 2rem auto;
+            }
+        }
+
+        .aboutContent {
+            padding-left: 4rem;
+
+            @media (max-width: $bp-medium) {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+    }
+
+    // favourites
+    .favourites {
+        padding: 10rem 0;
+        text-align: center;
+        background-color: #fff;
+
+        @media (max-width: $bp-medium) {
+            padding: 5rem 0;
+        }
+
+        .galleryList {
+            .galleryItem {
+                padding: 1rem;
+
+                .galleryImg {
+                    overflow: hidden;
+                    border-radius: 1rem;
+                    margin-bottom: 2rem;
+                    background-color: $color-dark;
+
+                    img {
+                        border-radius: 1rem;
+                        height: 50rem;
+                        object-fit: cover;
+                        width: 100%;
+                        transition: $transition;
+                        display: block;
+                        @include transformScaleFix;
+
+                        @media (max-width: $bp-medium) {
+                            height: 30rem;
+                        }
+
+                        @media (max-width: $bp-small) {
+                            height: 25rem;
+                        }
+
+                        &:hover {
+                            transform: scale(1.1);
+                            opacity: .8;
+                        }
+                    }
+                }
+ 
+            }
+        }
+
+        .favouritesDesc {
+            max-width: 70rem;
+            margin: 0 auto;
+        }
+
+        .btnAll {
+            margin-top: 6rem;
+
+            @media (max-width: $bp-medium) {
+                margin-top: 2rem;
+            }
+        }
+    
+    }
+
+    // categories
+    .categories {
+        padding: 7rem 0 1rem;
+        background-color: $color-light-gray;
+
+        @media (max-width: $bp-medium) {
+            padding: 4rem 0 1rem;
+        }
+
+        .categoriesDesc {
+            font-size: 2rem;
+            max-width: 100rem;
+        }
+
+        .categoryList {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 1rem 1rem 0 1rem;
+            margin-top: -6rem;
+
+            @media (max-width: $bp-medium) {
+                margin-top: 0;
+            }
+
+            .categoryItem {
+                width: 20%;
+                padding: .5rem;
+                position: relative;
+
+                .categoryImage {
+                    overflow: hidden;
+
+                    img {
+                        display: block;
+                        height: 45rem;
+                        width: 100%;
+                        object-fit: cover;
+                        transition: $transition;
+
+                        @media (max-width: $bp-medium) {
+                            height: 22rem;
+                        }
+
+                        @media (max-width: $bp-small) {
+                            height: 16rem;
+                        }
+                    }
+                }
+
+                .categoryTitle {
+                    padding: 2rem;
+                    text-align: center;
+                    background-color: rgb(34 34 34 / 35%);
+                    font-size: 2rem;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-family: $font-secondary;
+                    margin: 0;
+                    position: absolute;
+                    top: .5rem;
+                    left: .5rem;
+                    right: .5rem;
+                    bottom: .5rem;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    transition: $transition;
+                    backdrop-filter: blur(5px);
+
+                    @media (max-width: $bp-medium) {
+                        font-size: 1.6rem;
+                    }
+                }
+
+                &:hover {
+                    .categoryTitle {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}

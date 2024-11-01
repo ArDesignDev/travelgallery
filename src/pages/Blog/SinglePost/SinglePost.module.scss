@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+
+.singlePost {
+    min-height: 200vh;
+    background-color: #fff;
+
+    .header {
+        position: relative;
+        margin-bottom: 5rem;
+
+        .headerBack {
+            background-color: $color-dark;
+
+            img {
+                height: 50rem;
+                width: 100%;
+                object-fit: cover;
+                opacity: .7;
+                display: block;
+            }
+        }
+
+        .headerText {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            padding: 4rem 4rem 6rem 4rem;
+            text-align: center;
+            
+            h1 {
+                color: #fff;
+            }
+        }
+    }
+
+    .main {
+        padding-bottom: 10rem;
+        p {
+            text-align: center;
+            font-size: 2rem;
+            padding: 2.5rem 0 2.5rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+    }
+}
+

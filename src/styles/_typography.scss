@@ -1,0 +1,60 @@
+@use './variables' as *;
+
+p {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    font-family: $font-secondary;
+
+    @media (max-width: $bp-medium) {
+        font-size: 1.4rem;
+    }
+}
+
+h1 {
+    font-size: 6rem;
+
+    @media (max-width: $bp-medium) {
+        font-size: 3rem;
+    }
+}
+
+h2 {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: $bp-medium) {
+        font-size: 3rem;
+    }
+
+    span {
+        color: $color-primary;
+    }
+}
+
+h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: $bp-medium) {
+        font-size: 2rem;
+    }
+}
+
+.btn {
+    padding: 1.25rem 3rem;
+    border: 2px solid $color-dark;
+    margin-top: 1rem;
+    display: inline-block;
+    transition: $transition;
+    font-family: $font-secondary;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+        background-color: $color-dark;
+    }
+}

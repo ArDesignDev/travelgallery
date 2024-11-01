@@ -1,0 +1,208 @@
+@use '../../styles/variables' as *;
+
+.header {
+    padding: 3rem 0 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+
+    &.scrolled {
+        padding-top: 2rem;
+        background-color: $color-dark;
+    }
+
+    .headerInner {
+        display: flex;
+        align-items: center;
+
+        .headerLogo {
+            .logo {
+                font-size: 4rem;
+                color: #fff;
+
+                @media (max-width: $bp-medium) {
+                    font-size: 3rem;
+                }
+            }
+        }
+
+        .nav {
+            display: flex;
+            margin-left: auto;
+
+            @media (max-width: $bp-medium) {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: $color-dark;
+                z-index: 1;
+                height: 100vh;
+                padding-top: 10rem;
+
+                &.active {
+                    display: flex;
+                }
+            }
+
+            .navList {
+                list-style: none;
+                display: flex;
+                gap: 1rem;
+
+                @media (max-width: $bp-medium) {
+                    flex-direction: column;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                li {
+                    margin: 0 1rem;
+                    
+                    a {
+                        padding: 1.5rem 1rem;
+                        font-size: 1.8rem;
+                        transition: $transition;
+                        position: relative;
+                        font-family: $font-secondary;
+                        color: #fff;
+                        text-transform: uppercase;
+
+                        @media (max-width: $bp-medium) {
+                            display: inline-block;
+                        }
+
+                        &::after {
+                            content: "";
+                            width: 0;
+                            height: 1px;
+                            background-color: #fff;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            transition: $transition;
+
+                                                  
+                            @media (max-width: $bp-medium) {
+                                display: none;
+                            }
+   
+                        }
+                        
+
+                        &:hover,
+                        &.active {
+                            color: #fff;
+
+                            &::after {
+                                width: 100%;
+
+                                @media (max-width: $bp-medium) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    
+                }
+
+            }
+
+            
+        }
+    }
+
+}
+  
+.menuButton {
+    display: none;
+    background-color: transparent;
+    border: none;
+
+    @media (max-width: $bp-medium) {
+        display: block;
+        width: 4rem;
+        margin-left: auto;
+    }
+
+    .menuIcon {
+        width: 25px;
+        height: 19px;
+        z-index: 10;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+    
+        display: none;
+    
+        @media (max-width: $bp-large) {
+            display: block;
+        }
+    
+        $icon-color: #fff;
+    
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: $icon-color;
+            transform-origin: 0 0;
+            transition: transform .3s ease-out;
+        }
+    
+        .menuIconMiddle {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: $icon-color;
+            transition: all .3s ease-out;
+            transform-origin: 0 50%;
+        }
+    
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: $icon-color;
+            transform-origin: 0 100%;
+            transition: transform .3s ease-out;
+        }
+    
+        &.menuIconClose::before {
+            transform: rotate(45deg) scaleX(1.25);
+            width: 20px;
+        }
+    
+        &.menuIconClose .menuIconMiddle {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+    
+        &.menuIconClose::after {
+            transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+            width: 20px;
+        }
+    }
+}
+  
+
+  
+
+
+  
+
+  
+ 
+  

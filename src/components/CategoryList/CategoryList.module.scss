@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+
+.categoryListWrapper {
+    @media (max-width: $bp-medium) {
+        overflow: hidden;
+    };
+}
+
+.categoryList {
+    padding: 4rem 0 5rem;
+    text-align: center;
+
+    @media (max-width: $bp-medium) {
+        padding: 2rem 0 2rem;
+        overflow-x: auto;
+    }
+
+    .categoryLinks {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+
+        @media (max-width: $bp-medium) {
+            gap: .5rem;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .categoryLink {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 1rem 2.5rem;
+            font-size: 1.6rem;
+            border-radius: 3rem;
+            background-color: #ededed;
+            transition: $transition;
+            font-family: $font-secondary;
+
+            @media (max-width: $bp-medium) {    
+                font-size: 1.2rem;
+                padding: .75rem 1.5rem; 
+                border-radius: 2rem;
+            }
+        
+            &:hover {
+                background-color: $color-dark;
+                color: #fff;
+            }
+        }
+
+        .active {
+            .categoryLink {
+                background-color: $color-dark;
+                color: #fff;
+            }
+        } 
+    }
+
+  
+}
+  

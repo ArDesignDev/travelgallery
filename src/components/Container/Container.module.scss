@@ -1,0 +1,20 @@
+@use '../../styles/variables' as *;
+
+.container {
+    max-width: 140rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+
+    @media (max-width: $bp-medium) {
+        padding: 0 2rem;
+    }
+
+    &.wide {
+        max-width: 100%;
+    }
+
+    &.mini {
+        max-width: 110rem;
+    }
+}
+

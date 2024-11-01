@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+
+.footer {
+    padding-top: 7rem;
+    background-color: $color-dark;
+
+    @media (max-width: $bp-medium) {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .footerContent {
+        padding: 4rem 0 10rem;
+        border-bottom: 1px solid #ffffff86;
+        margin-bottom: 2rem;
+
+        @media (max-width: $bp-medium) {
+            padding: 0 0 5rem;
+        }
+
+        a {
+            transition: $transition;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        .footerLogo {
+            padding-right: 6rem;
+
+            @media (max-width: $bp-medium) {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .footerContact {
+        .footerContactList {
+            list-style: none;
+
+            li {
+                padding-bottom: .75rem;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    width: 2.4rem;
+                    height: auto;
+                    margin-right: 1rem;
+
+                    @media (max-width: $bp-medium) {
+                        width: 2rem;
+                        transform: translateY(-1px);
+                    }
+                }
+            }
+        }
+
+    }
+
+    .footerNav {
+        .navList {
+            list-style: none;
+
+            li {
+                padding-bottom: 1rem;
+            }
+        }
+    }
+
+    h3 {
+        color: #fff;
+        margin-bottom: 2rem;
+
+        @media (max-width: $bp-medium) {
+            margin-top: 2rem;
+        }
+    }
+
+    p, a {
+        color: #fff;
+        font-size: 1.6rem;
+        font-family: $font-secondary;
+
+        @media (max-width: $bp-medium) {
+            font-size: 1.4rem;
+        }
+    }
+
+    .footerBottom {
+        @media (max-width: $bp-medium) {
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+
+        p, a {
+            font-size: 1.2rem;
+
+            @media (max-width: $bp-medium) {
+                margin-bottom: .5rem;
+            }
+        }
+
+        .footerInfo {
+
+            @media (max-width: $bp-medium) {
+                order: -1;
+            }
+    
+            a {
+                transition: $transition;
+                color: #fff;
+    
+                &:hover {
+                    color: $color-primary;
+                }
+            }
+    
+            .webLink {
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    @media (max-width: $bp-medium) {
+                        justify-content: center;
+                    }
+                }
+    
+                svg {
+                    width: 2rem;
+                    height: auto;
+                    margin-left: .5rem;
+                }
+            }
+        }
+    }
+
+    
+}
