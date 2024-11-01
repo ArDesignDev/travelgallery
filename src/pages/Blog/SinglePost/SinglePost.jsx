@@ -35,7 +35,7 @@ function SinglePost() {
         {!loading && postData && (
           <Helmet>
             <title>{postData.title?.rendered} | My Travel Blog</title>
-            <meta name="description" content={postData.excerpt?.rendered || "Explore the world from my perspective."} />
+            <meta name="description" content={postData.acf?.gallery_description || "Explore the world from my perspective."} />
           </Helmet>
         )}
 
@@ -46,6 +46,17 @@ function SinglePost() {
 
       <div className={styles.main}>
             <Container>
+                {/* Display Date 
+                {postData?.acf?.gallery_date && (
+                  <p className={styles.date}>Date: {postData.acf.gallery_date}</p>
+                )}*/}
+
+                {/* Display Custom Description Field */}
+                {postData?.acf?.gallery_description && (
+                  <div className={styles.customDesc} dangerouslySetInnerHTML={{ __html: postData.acf.gallery_description }} />
+                )}
+
+                {/* Display Full Content */}
                 <div dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }} />
             </Container>
       </div>

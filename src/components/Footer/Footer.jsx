@@ -14,7 +14,7 @@ function Footer() {
             <div className={`col-sm-4`}>
               <div className={styles.footerLogo}>
                 <h3>MyTravelGallery</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro qui beatae consectetur earum, corporis aliquid, possimus voluptatibus sapiente numquam voluptate expedita praesentium ea deleniti odio! Ipsum eos maiores totam consequuntur.</p>
+                <p>A collection of snapshots from my journeys around the world, capturing landscapes, cultures, and unforgettable experiences. Each photo tells a story—explore and be inspired.</p>
               </div>
             </div>
 

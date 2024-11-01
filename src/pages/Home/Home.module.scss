@@ -238,7 +238,7 @@
                     display: flex;
                     justify-content: center;
                     transition: $transition;
-                    backdrop-filter: blur(5px);
+                    backdrop-filter: blur(3px);
 
                     @media (max-width: $bp-medium) {
                         font-size: 1.6rem;
