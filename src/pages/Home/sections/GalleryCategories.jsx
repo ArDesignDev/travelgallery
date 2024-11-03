@@ -80,7 +80,7 @@ function GalleryCategories({ title, description }) {
         <Slider key={categories.length} {...settings} className={styles.categoryList}>
           {categories.map((category) => (
             <div key={category.id} className={styles.categoryItem}>
-              <Link to={`/gallery-category/${category.id}`} className={styles.categoryLink}>
+              <Link to={`/gallery-category/${category.slug}`} className={styles.categoryLink}>
                {(category.gallery_category_image_small || category.gallery_category_image) && (
                     <figure className={styles.categoryImage}>
                       <img 

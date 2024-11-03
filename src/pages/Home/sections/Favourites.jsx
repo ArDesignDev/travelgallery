@@ -52,14 +52,14 @@ function Favourites({title, subtitle, description}) {
             <div key={item.id} className={`${styles.galleryItem} col-sm-6`}>
               {item.gallerySmallImage ? (
                 <figure className={styles.galleryImg}>
-                  <Link to={`/gallery/${item.id}`}>
+                  <Link to={`/gallery/${item.slug}`}>
                     <img src={item.gallerySmallImage} alt={item.title.rendered} />
                   </Link>
                 </figure>
               ) : (
                 item._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
                   <figure className={styles.galleryImg}>
-                    <Link to={`/gallery/${item.id}`}>
+                    <Link to={`/gallery/${item.slug}`}>
                       <img src={item._embedded['wp:featuredmedia'][0].source_url} alt={item.title.rendered} />
                     </Link>
                   </figure>

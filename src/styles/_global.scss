@@ -54,7 +54,7 @@
         }
     }
 
-    .row-a-center {
+    &.row-a-center {
         align-items: center;
     }
 }
@@ -104,6 +104,20 @@
         figcaption {
             left: 1rem;
             width: calc(100% - 1rem);
+        }
+    }
+}
+
+.wp-block-video {
+    video {
+        height: 86rem;
+        width: 100%;
+        object-position: center;
+        object-fit: cover;
+        margin-bottom: 2rem;
+
+        @media (max-width: $bp-medium) {
+            height: auto;
         }
     }
 }

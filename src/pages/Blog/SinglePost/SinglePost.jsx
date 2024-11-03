@@ -4,22 +4,29 @@ import styles from './SinglePost.module.scss';
 import { Helmet } from 'react-helmet';
 
 import Container from '../../../components/Container/Container';
-
 import { URL } from '../../../components/constants';
 import HeaderBanner from '../../../components/HeaderBanner/HeaderBanner';
 
 function SinglePost() {
-  const { id } = useParams(); // Fetch ID from URL
+  const { slug } = useParams(); // Fetch slug from URL
   const [postData, setPostData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const postUrl = `${URL}/wp-json/wp/v2/gallery/${id}?_embed=true`;
+  
+  // Modify the URL to fetch by slug
+  const postUrl = `${URL}/wp-json/wp/v2/gallery?slug=${slug}&_embed=true`;
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
         const response = await fetch(postUrl);
         const data = await response.json();
-        setPostData(data);
+
+        // Since fetching by slug returns an array, take the first item
+        if (data.length > 0) {
+          setPostData(data[0]);
+        } else {
+          console.error('Post not found');
+        }
         setLoading(false);
       } catch (error) {
         console.error('Error fetching post data:', error);
@@ -28,7 +35,7 @@ function SinglePost() {
     };
 
     fetchPostData();
-  }, [id]);
+  }, [slug]);
 
   return (
     <article className={`${styles.singlePost}`}>
@@ -44,21 +51,21 @@ function SinglePost() {
         title={postData?.title?.rendered || ''}
       />
 
-      <div className={styles.main}>
-            <Container>
-                {/* Display Date 
-                {postData?.acf?.gallery_date && (
-                  <p className={styles.date}>Date: {postData.acf.gallery_date}</p>
-                )}*/}
+      <div className={`${styles.main} singlePost`}>
+        <Container>
+          {/* Display Date 
+          {postData?.acf?.gallery_date && (
+            <p className={styles.date}>Date: {postData.acf.gallery_date}</p>
+          )}*/}
 
-                {/* Display Custom Description Field */}
-                {postData?.acf?.gallery_description && (
-                  <div className={styles.customDesc} dangerouslySetInnerHTML={{ __html: postData.acf.gallery_description }} />
-                )}
+          {/* Display Custom Description Field */}
+          {postData?.acf?.gallery_description && (
+            <div className={styles.customDesc} dangerouslySetInnerHTML={{ __html: postData.acf.gallery_description }} />
+          )}
 
-                {/* Display Full Content */}
-                <div dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }} />
-            </Container>
+          {/* Display Full Content */}
+          <div dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }} />
+        </Container>
       </div>
       
     </article>

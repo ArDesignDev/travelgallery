@@ -30,7 +30,7 @@ function CategoryList() {
               key={category.id}
               className={`${styles.categoryItem} ${parseInt(categoryId) === category.id ? styles.active : ''}`}
             >
-              <Link to={`/gallery-category/${category.id}`} className={styles.categoryLink}>
+              <Link to={`/gallery-category/${category.slug}`} className={styles.categoryLink}>
                 {category.name}
               </Link>
             </li>

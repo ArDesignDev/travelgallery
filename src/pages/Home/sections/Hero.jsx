@@ -1,8 +1,24 @@
+import React, { useEffect } from 'react';
 import Container from '../../../components/Container/Container';
 import ButtonLink from '../../../components/ButtonLink/ButtonLink';
 import styles from '../Home.module.scss';
 
 const Hero = ({ video, subtitle, title, buttonText }) => {
+  useEffect(() => {
+    // Calculate viewport height and set --vh CSS variable
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    // Initial setting of --vh
+    setVh();
+
+    // Update --vh on resize
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
+
   return (
     <div className={styles.hero}>
       {video && (

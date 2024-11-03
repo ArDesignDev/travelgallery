@@ -18,6 +18,7 @@ function Archive() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(true); // New loading state
   const perPage = 6;
   const optionsUrl = `${URL}/wp-json/mytheme/v1/options`;
   
@@ -35,6 +36,7 @@ function Archive() {
   }, []);
 
   const fetchPosts = async () => {
+    setLoading(true); // Set loading to true when fetching starts
     const postsUrl = `${URL}/wp-json/wp/v2/gallery?_embed=true&page=${page}&per_page=${perPage}`;
     try {
       const response = await fetch(postsUrl);
@@ -49,8 +51,10 @@ function Archive() {
 
       setPosts((prevPosts) => (page === 1 ? enrichedPosts : [...prevPosts, ...enrichedPosts]));
       setHasMore(data.length === perPage);
+      setLoading(false); // Set loading to false when fetching ends
     } catch (error) {
       console.error('Error fetching gallery posts:', error);
+      setLoading(false); // Ensure loading is set to false in case of error
     }
   };
 
@@ -79,18 +83,20 @@ function Archive() {
         <CategoryList />
       </Container>
 
-  
-        <div className={`${styles.main} ${styles.fadeIn}`}>
-          <Container>
-            <div
-              className={styles.headerDesc}
-              dangerouslySetInnerHTML={{ __html: options?.gallery_text || 'Loading description...' }}
-            />
+      <div className={`${styles.main} ${styles.fadeIn}`}>
+        <Container>
+          <div
+            className={styles.headerDesc}
+            dangerouslySetInnerHTML={{ __html: options?.gallery_text || '' }}
+          />
 
+          {loading ? (
+            <div className={styles.loader}>Loading...</div> // Loader message or spinner
+          ) : (
             <div className={`${styles.archiveList} row`}>
               {posts.map((post) => (
                 <div key={post.id} className={`${styles.archiveItem} col-sm-4`}>
-                  <Link to={`/gallery/${post.id}`} className={styles.postLink}>
+                  <Link to={`/gallery/${post.slug}`} className={styles.postLink}>
                     <div className={styles.postImageWrapper}>
                       <figure className={styles.postImage}>
                         {post.gallerySmallImage ? (
@@ -115,16 +121,17 @@ function Archive() {
                 </div>
               ))}
             </div>
+          )}
 
-            {hasMore && (
-              <div className={styles.loadMore}>
-                <button onClick={loadMorePosts} disabled={!hasMore} className="btn">
-                  {hasMore ? 'Load More' : 'No More Posts'}
-                </button>
-              </div>
-            )}
-          </Container>
-        </div>
+          {hasMore && !loading && (
+            <div className={styles.loadMore}>
+              <button onClick={loadMorePosts} disabled={!hasMore} className="btn">
+                {hasMore ? 'Load More' : 'No More Posts'}
+              </button>
+            </div>
+          )}
+        </Container>
+      </div>
       
     </main>
   );

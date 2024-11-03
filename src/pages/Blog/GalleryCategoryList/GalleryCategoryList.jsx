@@ -67,7 +67,7 @@ function GalleryCategoryList() {
           <ul className={`${styles.postList} row`}>
             {categories.map((category) => (
               <li key={category.id} className={`${styles.postItem} col-sm-3`}>
-                <Link to={`/gallery-category/${category.id}`} className={styles.categoryLink}>
+                <Link to={`/gallery-category/${category.slug}`} className={styles.categoryLink}>
                   {/* Display category image if available */}
                   {(category.gallery_category_image_small || category.gallery_category_image) && (
                     <figure className={styles.categoryImage}>

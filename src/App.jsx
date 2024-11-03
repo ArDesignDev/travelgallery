@@ -46,10 +46,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/gallery" element={<Archive />} />
-          <Route path="/gallery/:id" element={<SinglePost />} />
+          <Route path="/gallery/:slug" element={<SinglePost />} />
 
           <Route path="/gallery-categories" element={<GalleryCategoryList />} />
-          <Route path="/gallery-category/:categoryId" element={<GalleryCategoryPage />} />
+          <Route path="/gallery-category/:slug" element={<GalleryCategoryPage />} />
         </Routes>
         <Footer />
         <BackToTop />
